@@ -215,6 +215,7 @@ module YARD
         @tags += [library.tag_create(tag_name, tag_buf)].flatten
         @tags.each do |tag|
           tag.object ||= object
+          tag.warns_about_invalid_types
         end
         @tags
       else
