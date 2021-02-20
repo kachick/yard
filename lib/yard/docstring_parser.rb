@@ -213,6 +213,10 @@ module YARD
 
       if library.has_tag?(tag_name)
         @tags += [library.tag_create(tag_name, tag_buf)].flatten
+        @tags.each do |tag|
+          tag.object ||= object
+        end
+        @tags
       else
         log.warn "Unknown tag @#{tag_name}" +
                  (object ? " in file `#{object.file}` near line #{object.line}" : "")
